@@ -39,12 +39,9 @@ if(type==='about'){
     {label:'X',url:'https://x.com/iizuna_machika'}
   ]});
 }
-if(type==='divination'){
- add({kind:'method-network',part:'六占術の相関・補完',title:'六占術はどう結び合うのか',mode:'overview',caption:'六つの異なる視点を照らし合わせ、共通点と違いを統合して読み解きます。',focus:[
-  {title:'性質',text:'四柱推命 × 西洋占星術 × 陰陽五行'},
-  {title:'時期',text:'九星気学 × 四柱推命 × 西洋占星術'},
-  {title:'名前',text:'姓名判断 × 言霊学'}
- ]});
+const divinationDiagram=original.querySelector('.divination-method-image');
+if(type==='divination' && divinationDiagram){
+ add({kind:'method-network',part:'五十縄鑑定の占術',title:'六つの占術を三つの縄に',caption:'各占術の読みを比べ、共通点や違いを相談の問いに照らし合わせます。'});
 }
 
 let heading=name,chapter=name,acc=[],accLinks=[],accLen=0;
@@ -296,32 +293,6 @@ const motifSVG={
 };
 function backgroundArt(n){const motif=motifFor(n);return {motif,html:`<svg viewBox="0 0 560 400" class="book-symbol book-motif-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><ellipse cx="350" cy="195" rx="242" ry="170" fill="#d7be90" opacity=".025"/>${motifSVG[motif]}</svg>`};}
 const triad=`<svg class="book-triad-svg" viewBox="0 0 360 292" aria-label="和、知・徳・体、自律・自立の三原理が相互につながる図" role="img"><path class="book-trace" pathLength="1" d="M180 42 Q300 100 282 230 Q180 283 78 230 Q50 100 180 42Z" fill="none" stroke="#d6b783" stroke-width="2"/><path class="book-trace delay" pathLength="1" d="M180 42 Q95 168 282 230 Q190 148 78 230 Q260 160 180 42" fill="none" stroke="#8cb9b8" stroke-width="2"/>${[[180,42,'和'],[78,230,'知・徳・体'],[282,230,'自律・自立']].map(([x,y,v])=>`<circle cx="${x}" cy="${y}" r="39" fill="#263e50" stroke="#e1c796"/><text x="${x}" y="${y+5}" fill="#fff2d8" font-size="${v.length>3?12:23}" font-family="serif" text-anchor="middle">${v}</text>`).join('')}</svg>`;
-// Schematic links illustrate complementary viewpoints, not fixed rankings or factual prediction.
-const methodNodes=[
-  {name:'四柱推命',x:94,y:70,short:'出生と暦'},
-  {name:'西洋占星術',x:266,y:70,short:'天体配置'},
-  {name:'九星気学',x:316,y:178,short:'時期・方位'},
-  {name:'陰陽五行',x:266,y:279,short:'性質の関係'},
-  {name:'姓名判断',x:94,y:279,short:'漢字・画数'},
-  {name:'言霊学',x:44,y:178,short:'音の象徴'}
-];
-const pairs=[
- {from:0,to:1,mode:'nature',label:'生まれを別の体系で照合'},
- {from:0,to:3,mode:'nature',label:'五行による性質の解釈'},
- {from:0,to:2,mode:'timing',label:'時期の傾向を照合'},
- {from:1,to:2,mode:'timing',label:'異なる時間の見方'},
- {from:2,to:3,mode:'timing',label:'暦・五行の接点'},
- {from:4,to:5,mode:'name',label:'名前の字と響き'}
-];
-const modes={overview:'全体を照らし合わせる',nature:'性質を複数の角度から',timing:'時期を異なる体系で',name:'名前を文字と音から'};
-function methodDiagram(mode){
- const active=(p)=>mode==='overview'||p.mode===mode;
- const paths=pairs.map((p,i)=>{const a=methodNodes[p.from],b=methodNodes[p.to];return `<path class="method-cross ${active(p)?'is-emphasis':''}" style="--order:${i}" d="M${a.x} ${a.y} L${b.x} ${b.y}"/>`}).join('');
- const spokes=methodNodes.map((p,i)=>`<path class="method-spoke" pathLength="1" style="--order:${i}" d="M${p.x} ${p.y} L180 178"/>`).join('');
- const label=methodNodes.map((p,i)=>{const selected=mode==='overview'||pairs.some(q=>q.mode===mode&&(q.from===i||q.to===i));return `<g class="method-node ${selected?'is-selected':''}" style="--order:${i}" transform="translate(${p.x},${p.y})"><rect x="-49" y="-23" width="98" height="46" rx="12"/><text x="0" y="-3" text-anchor="middle" class="method-name">${p.name}</text><text x="0" y="13" text-anchor="middle" class="method-short">${p.short}</text></g>`}).join('');
- return `<svg class="book-network-svg" viewBox="0 0 360 352" role="img" aria-label="六占術それぞれが統合解釈につながり、主題に応じて占術同士を照合する概念図。線は役割の接点の例を示し、固定した優先順位ではありません"><circle cx="180" cy="178" r="132" class="method-orbit"/>${spokes}${paths}<circle class="method-core-halo" cx="180" cy="178" r="46"/><circle class="method-core" cx="180" cy="178" r="38"/><text x="180" y="171" class="method-core-text" text-anchor="middle">統合解釈</text><text x="180" y="190" class="method-core-sub" text-anchor="middle">判断の材料</text>${label}</svg>`;
-}
-
 stage.prepend(mk('h1', 'sr-only', title));
 
 function makePage(n, includeArt = true) {
@@ -364,10 +335,12 @@ function makePage(n, includeArt = true) {
   const grid=mk('div','book-activity-grid');
   (s.activities||[]).forEach((a,i)=>{const card=mk('article','book-activity-card');card.style.setProperty('--act',i);card.append(mk('b','',a.title),mk('p','',a.text));if(a.url){const link=mk('a','', '詳しく見る ↗');link.href=a.url;card.append(link)}grid.append(card)});copy.append(grid);
  }else if(s.kind==='method-network'){
-  const visual=mk('div','book-network-wrap');visual.innerHTML=methodDiagram(s.mode);copy.append(visual);
-  copy.append(mk('p','book-network-caption',s.caption));
-  if(s.focus?.length){const groups=mk('div','book-network-focus');for(const f of s.focus){const g=mk('div','book-network-focus-item');g.append(mk('b','',f.title),mk('span','',f.text));groups.append(g)}copy.append(groups)}
-  copy.append(mk('p','book-network-footnote','線は占術間の照合例です。重みづけは鑑定内容ごとに変わり、固定の優劣はありません。'));
+  const visual=mk('div','book-network-wrap');
+  const diagram=divinationDiagram.cloneNode();
+  diagram.className='book-network-svg';
+  diagram.removeAttribute('loading');
+  visual.append(diagram);
+  copy.append(visual,mk('p','book-network-caption',s.caption));
  }else if(s.kind==='plan-grid'){
   const grid=mk('div','book-plans-layout');
   for(const p of s.plans){const item=mk('article','book-plan-item');item.append(mk('h3','',p.title),mk('strong','book-plan-value',p.price));

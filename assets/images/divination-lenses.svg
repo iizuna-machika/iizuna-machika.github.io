@@ -1,18 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" role="img">
-<defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0c1b2b"/><stop offset=".62" stop-color="#213a4d"/><stop offset="1" stop-color="#122235"/></linearGradient>
-<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eee0b6"/><stop offset=".52" stop-color="#caa569"/><stop offset="1" stop-color="#876a50"/></linearGradient>
-<linearGradient id="aqua" x1="0" y1="0" x2="1" y2=".2"><stop stop-color="#719a9b"/><stop offset=".5" stop-color="#c2e1cf"/><stop offset="1" stop-color="#608994"/></linearGradient>
-<radialGradient id="halo"><stop stop-color="#f2c987" stop-opacity=".28"/><stop offset="1" stop-color="#c6b37e" stop-opacity="0"/></radialGradient>
-<radialGradient id="moon"><stop stop-color="#f7e6c9"/><stop offset=".58" stop-color="#d8b88d"/><stop offset="1" stop-color="#b48d6c"/></radialGradient>
-<pattern id="washi" width="11" height="15" patternUnits="userSpaceOnUse"><path d="M0 3l10 1M2 11l5-2" stroke="#d9c39e" stroke-opacity=".065" stroke-width=".7"/></pattern>
-<pattern id="stars" width="127" height="91" patternUnits="userSpaceOnUse"><circle cx="32" cy="42" r="1.4" fill="#f6e5bf" opacity=".5"/><circle cx="100" cy="18" r=".9" fill="#a9c9ca" opacity=".5"/></pattern>
-<filter id="soft"><feGaussianBlur stdDeviation="9"/></filter>
-</defs><rect width="1200" height="510" fill="url(#bg)"/><rect width="1200" height="510" fill="url(#washi)"/><rect width="1200" height="510" fill="url(#stars)"/>
-<ellipse cx="740" cy="225" rx="380" ry="285" fill="url(#halo)"/>
-<path d="M0 440 Q130 345 240 418 T480 380 Q615 312 740 425 T1020 390 L1200 350 L1200 510 L0 510Z" fill="#0a1927" opacity=".55"/>
-<path d="M0 460 Q120 395 250 448 T560 420 Q760 372 860 448 T1200 412 L1200 510 L0 510Z" fill="#0b1724" opacity=".5"/>
-<g transform="translate(635 250)"><circle r="192" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity=".65"/><circle r="148" fill="none" stroke="url(#aqua)" stroke-width="1.1" opacity=".64"/><circle r="96" fill="none" stroke="url(#gold)" stroke-width="1.6" opacity=".8"/>
-<circle r="45" fill="#2b3947" stroke="url(#gold)" stroke-width="2.5"/><circle r="21" fill="url(#moon)"/><g stroke="#d1b17c" stroke-width="2.3" fill="none" opacity=".8"><path d="M0 -192 V-65 M166 -96 L57 -30 M166 96 L57 30 M0 192 V65 M-166 96 L-57 30 M-166 -96 L-57 -30"/></g>
-<g fill="#172638" stroke="url(#gold)" stroke-width="2.3"><circle cx="0" cy="-192" r="29"/><circle cx="166" cy="-96" r="29"/><circle cx="166" cy="96" r="29"/><circle cx="0" cy="192" r="29"/><circle cx="-166" cy="96" r="29"/><circle cx="-166" cy="-96" r="29"/></g>
-<g stroke="#e9d0a0" stroke-width="2.5" fill="none"><path d="M-12 -193h24M0 -205v24"/><path d="M156 -105 l20 18m-20 0l20-18"/><circle cx="166" cy="96" r="10"/><path d="M0 179 Q-12 191 0 203 Q12 191 0 179"/><path d="M-181 96h30M-166 80v32"/><path d="M-181 -96q15 -19 30 0q-15 19 -30 0"/></g></g><g stroke="#e8ce9d" fill="none" opacity=".5"><path d="M43 307Q231 18 396 160"/><path d="M872 343Q1014 240 1168 314"/></g><g opacity=".46" stroke="url(#gold)" fill="none" stroke-width="1.6"><path d="M-20 78 C155 40 185 155 370 106"/><path d="M980 460 Q1085 416 1220 465"/><path d="M-20 470 Q170 392 335 479"/></g><g transform="translate(85 87)"><ellipse cx="0" cy="-11.7" rx="6.3" ry="9.9" fill="#e8cdb4" opacity="0.52" transform="rotate(0)"/><ellipse cx="0" cy="-11.7" rx="6.3" ry="9.9" fill="#e8cdb4" opacity="0.52" transform="rotate(72)"/><ellipse cx="0" cy="-11.7" rx="6.3" ry="9.9" fill="#e8cdb4" opacity="0.52" transform="rotate(144)"/><ellipse cx="0" cy="-11.7" rx="6.3" ry="9.9" fill="#e8cdb4" opacity="0.52" transform="rotate(216)"/><ellipse cx="0" cy="-11.7" rx="6.3" ry="9.9" fill="#e8cdb4" opacity="0.52" transform="rotate(288)"/><circle r="3.6" fill="#d7b477"/></g><g transform="translate(131 122)"><ellipse cx="0" cy="-7.3" rx="3.9" ry="6.2" fill="#e8cdb4" opacity="0.52" transform="rotate(0)"/><ellipse cx="0" cy="-7.3" rx="3.9" ry="6.2" fill="#e8cdb4" opacity="0.52" transform="rotate(72)"/><ellipse cx="0" cy="-7.3" rx="3.9" ry="6.2" fill="#e8cdb4" opacity="0.52" transform="rotate(144)"/><ellipse cx="0" cy="-7.3" rx="3.9" ry="6.2" fill="#e8cdb4" opacity="0.52" transform="rotate(216)"/><ellipse cx="0" cy="-7.3" rx="3.9" ry="6.2" fill="#e8cdb4" opacity="0.52" transform="rotate(288)"/><circle r="2.24" fill="#d7b477"/></g><g transform="translate(203 60)"><ellipse cx="0" cy="-7.8" rx="4.2" ry="6.6" fill="#e8cdb4" opacity="0.52" transform="rotate(0)"/><ellipse cx="0" cy="-7.8" rx="4.2" ry="6.6" fill="#e8cdb4" opacity="0.52" transform="rotate(72)"/><ellipse cx="0" cy="-7.8" rx="4.2" ry="6.6" fill="#e8cdb4" opacity="0.52" transform="rotate(144)"/><ellipse cx="0" cy="-7.8" rx="4.2" ry="6.6" fill="#e8cdb4" opacity="0.52" transform="rotate(216)"/><ellipse cx="0" cy="-7.8" rx="4.2" ry="6.6" fill="#e8cdb4" opacity="0.52" transform="rotate(288)"/><circle r="2.4" fill="#d7b477"/></g><g transform="translate(1088 82)"><ellipse cx="0" cy="-10.4" rx="5.6" ry="8.8" fill="#e8cdb4" opacity="0.52" transform="rotate(0)"/><ellipse cx="0" cy="-10.4" rx="5.6" ry="8.8" fill="#e8cdb4" opacity="0.52" transform="rotate(72)"/><ellipse cx="0" cy="-10.4" rx="5.6" ry="8.8" fill="#e8cdb4" opacity="0.52" transform="rotate(144)"/><ellipse cx="0" cy="-10.4" rx="5.6" ry="8.8" fill="#e8cdb4" opacity="0.52" transform="rotate(216)"/><ellipse cx="0" cy="-10.4" rx="5.6" ry="8.8" fill="#e8cdb4" opacity="0.52" transform="rotate(288)"/><circle r="3.2" fill="#d7b477"/></g><g transform="translate(1118 134)"><ellipse cx="0" cy="-6.5" rx="3.5" ry="5.5" fill="#e8cdb4" opacity="0.52" transform="rotate(0)"/><ellipse cx="0" cy="-6.5" rx="3.5" ry="5.5" fill="#e8cdb4" opacity="0.52" transform="rotate(72)"/><ellipse cx="0" cy="-6.5" rx="3.5" ry="5.5" fill="#e8cdb4" opacity="0.52" transform="rotate(144)"/><ellipse cx="0" cy="-6.5" rx="3.5" ry="5.5" fill="#e8cdb4" opacity="0.52" transform="rotate(216)"/><ellipse cx="0" cy="-6.5" rx="3.5" ry="5.5" fill="#e8cdb4" opacity="0.52" transform="rotate(288)"/><circle r="2.0" fill="#d7b477"/></g><g transform="translate(1015 39)"><ellipse cx="0" cy="-7.2" rx="3.9" ry="6.1" fill="#e8cdb4" opacity="0.52" transform="rotate(0)"/><ellipse cx="0" cy="-7.2" rx="3.9" ry="6.1" fill="#e8cdb4" opacity="0.52" transform="rotate(72)"/><ellipse cx="0" cy="-7.2" rx="3.9" ry="6.1" fill="#e8cdb4" opacity="0.52" transform="rotate(144)"/><ellipse cx="0" cy="-7.2" rx="3.9" ry="6.1" fill="#e8cdb4" opacity="0.52" transform="rotate(216)"/><ellipse cx="0" cy="-7.2" rx="3.9" ry="6.1" fill="#e8cdb4" opacity="0.52" transform="rotate(288)"/><circle r="2.2" fill="#d7b477"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350">
+  <title>六つの占術と三つの縄</title>
+  <desc>時の縄、星の縄、名の縄を相談の問いに照らし合わせて結びます。陰陽五行は解釈を補う共通理論です。</desc>
+  <defs>
+    <linearGradient id="panel" x2="0" y2="1">
+      <stop stop-color="#243f51"/>
+      <stop offset="1" stop-color="#152a3a"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="#d7b982" stroke-width="2.5">
+    <path d="M102 156v16q0 27 38 27h160v17M300 156v60M498 156v16q0 27-38 27H300"/>
+  </g>
+  <g fill="url(#panel)" stroke-width="1.5">
+    <rect x="8" y="12" width="188" height="144" rx="14" stroke="#d7b982"/>
+    <rect x="206" y="12" width="188" height="144" rx="14" stroke="#a5c3c0"/>
+    <rect x="404" y="12" width="188" height="144" rx="14" stroke="#c9b4cd"/>
+    <rect x="180" y="216" width="240" height="57" rx="28" stroke="#d7b982"/>
+  </g>
+  <g stroke="#b4c4c3" stroke-opacity=".35">
+    <path d="M28 62h148m50 0h148m50 0h148"/>
+  </g>
+  <g font-family="sans-serif" text-anchor="middle" font-size="24">
+    <text x="102" y="48" fill="#efd2a0" font-weight="bold">時の縄</text>
+    <text x="300" y="48" fill="#c1dfda" font-weight="bold">星の縄</text>
+    <text x="498" y="48" fill="#e2cfe6" font-weight="bold">名の縄</text>
+    <g fill="#fff1d9">
+      <text x="102" y="96">四柱推命</text>
+      <text x="102" y="132">九星気学</text>
+      <text x="300" y="96">西洋占星術</text>
+      <text x="300" y="132">宿曜占星術</text>
+      <text x="498" y="96">姓名判断</text>
+      <text x="498" y="132">言霊学</text>
+      <text x="300" y="252" font-weight="bold">相談の問いに結ぶ</text>
+    </g>
+    <rect x="143" y="295" width="314" height="43" rx="8" fill="#172b3a" stroke="#a5c3c0" stroke-dasharray="4 5"/>
+    <text x="300" y="324" font-size="22" fill="#c1dfda">共通の補助理論　陰陽五行</text>
+  </g>
+</svg>

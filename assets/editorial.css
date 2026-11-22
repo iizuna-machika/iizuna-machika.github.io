@@ -427,7 +427,6 @@ body.book-on.book-reading .book-original :is(.service-index, .principle-index),
 .page-legal footer a { color: inherit; }
 
 @media (max-width: 760px) {
-  .book-network-focus-item span { font-size: .72rem; line-height: 1.5; }
   .book-profile-links a { min-height: 44px !important; }
   .page-home .scene-copy .scene-text { text-wrap: pretty; }
 }
@@ -620,8 +619,6 @@ body.book-on .site-header .brand-sub { color: var(--text-muted-night); }
     grid-template-columns: minmax(0, 1fr);
   }
   .book-plate { grid-template-rows: minmax(0, 1fr); }
-  .book-network-focus { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .book-network-focus-item { min-width: 0; overflow-wrap: anywhere; }
   body.book-on:not(.book-reading) .book-current .book-copy {
     max-height: 100%;
     overflow-y: auto !important;
@@ -703,7 +700,6 @@ body.book-on .site-header .brand-sub { color: var(--text-muted-night); }
     height: 100%;
     max-height: 100%;
   }
-  .book-plate.book-method-network .book-network-focus { width: 100%; }
 }
 .book-plate.book-method-network .book-copy { max-height: 100%; }
 
