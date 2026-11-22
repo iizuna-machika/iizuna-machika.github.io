@@ -1,0 +1,12 @@
+
+/* Scroll-linked ink: minimum 80% text opacity, no text ever hidden. */
+.scroll-ink-enabled .scroll-ink-target{--ink-enter:1;opacity:calc(.82 + .18 * var(--ink-enter));transform:translate3d(0,calc((1 - var(--ink-enter))*12px),0);transition:none;will-change:transform,opacity}
+.scroll-ink-enabled .scroll-ink-target:is(h1,h2,h3){text-decoration-thickness:2px;text-decoration-color:#c3a57f; text-underline-offset:9px}
+.scroll-ink-enabled .story-motion-panel .story-moving-path{animation:none!important;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--motif-draw,1));filter:drop-shadow(0 0 4px #eac18b66)}
+.scroll-ink-enabled .story-motion-panel{--motif-draw:1}
+@media(prefers-reduced-motion:reduce){.scroll-ink-enabled .scroll-ink-target{opacity:1!important;transform:none!important}.scroll-ink-enabled .story-motion-panel .story-moving-path{stroke-dashoffset:0!important}}
+/* Home is already wheel/swipe driven: refine its typography without changing the interaction model. */
+.page-home .scene-copy.active .scene-title{animation:scene-ink-unveil .85s cubic-bezier(.25,.8,.25,1) both}
+.page-home .scene-copy.active .scene-text{animation:scene-ink-unveil 1s .1s cubic-bezier(.25,.8,.25,1) both}
+@keyframes scene-ink-unveil{from{opacity:.72;filter:blur(1.4px);transform:translateY(8px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.page-home .scene-copy.active .scene-title,.page-home .scene-copy.active .scene-text{animation:none!important}}

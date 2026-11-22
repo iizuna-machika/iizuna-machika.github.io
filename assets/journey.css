@@ -1,0 +1,72 @@
+/* Ver.11 immersive page-wide scrolling, shared by About, Teachings, Divination, Works, Journal, Contact.
+   One screen stays pinned while text and semantic illustration evolve. */
+body.journey-enabled{background:#0d1d2c}
+body.journey-enabled .site-header{position:fixed!important;top:0;left:0;right:0;z-index:90;background:#0c1b2ae6;backdrop-filter:blur(12px);border-color:#c6a8763b;color:#f6ebd7}
+body.journey-enabled .menu-overlay{position:fixed;z-index:100}
+body.journey-enabled main{padding:0!important;max-width:none!important;width:100%;margin:0;min-height:100vh}
+body.journey-enabled main>.journey-original{display:none}
+body.journey-enabled.journey-reading{background:var(--paper,#f5f0e8)}
+body.journey-enabled.journey-reading main>.journey-original{display:block;padding-top:82px}
+body.journey-enabled.journey-reading .journey-track{display:none!important}
+body.journey-enabled .page-scroll-signal{display:none!important}
+.journey-toolbar{position:fixed;top:75px;left:50%;transform:translateX(-50%);z-index:80;display:flex;align-items:center;gap:4px;max-width:calc(100vw - 18px);border-radius:100px;padding:5px;background:#102536ef;border:1px solid #c0a77380;box-shadow:0 8px 22px #0b172c7a;backdrop-filter:blur(18px);white-space:nowrap}
+.journey-mode{padding:9px 13px;border:0;border-radius:100px;background:transparent;color:#dfd5c6;font-size:clamp(.66rem,1.5vw,.82rem);letter-spacing:.035em;cursor:pointer}
+.journey-mode.is-active{background:#d4b883;color:#142736;font-weight:700}
+.journey-counter{font-size:.67rem;color:#d6bb87;letter-spacing:.06em;padding:0 10px}
+.journey-track{height:150svh;position:relative;isolation:isolate}
+.journey-stage{position:sticky;top:0;height:100svh;width:100%;overflow:hidden;background:radial-gradient(ellipse at 75% 27%,#2e4252 0%,#142b3d 46%,#081a29 92%);color:#f4e9d6;isolation:isolate}
+.journey-stage:before{content:'';position:absolute;inset:20px 4vw;z-index:4;pointer-events:none;border:1px solid #c4a47025;border-radius:11px}
+.journey-stage:after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(3deg,transparent 0 11px,#fff1d505 12px,transparent 13px)}
+.journey-ambient{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.journey-ambient img{position:absolute;right:-7%;top:8%;width:min(100%,1100px);height:88%;object-fit:contain;opacity:.16;filter:saturate(.6) sepia(.15) blur(2px)}
+.journey-layer{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;will-change:opacity,transform;transition:none}
+.journey-layer.journey-front{pointer-events:auto;z-index:3}
+.journey-graphic{position:absolute;inset:-2% -6% 0 21%;z-index:0;display:grid;place-items:center;pointer-events:none;opacity:.66;filter:drop-shadow(0 0 24px #c3a47b37)}
+.journey-symbol{width:min(120%,980px);height:100%;max-height:840px;opacity:.9;transform:rotate(calc((1 - var(--journey-draw,0))* -12deg)) scale(calc(.88 + var(--journey-draw,0)*.12))}
+.journey-gold-thread,.journey-blue-thread{stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 8px #e4c28b7f)}
+.journey-spark{opacity:var(--journey-draw,0);filter:drop-shadow(0 0 11px #d9b17f)}
+.journey-content{position:absolute;z-index:2;inset:18% 7% 11%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:clamp(12px,2vw,24px);width:min(750px,77vw);pointer-events:none}
+.journey-kicker{margin:0;color:#dabd8c;font:600 .7rem/1.4 sans-serif;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 3px 9px #071322}
+.journey-title{margin:0;color:#f7e9d2;font:500 clamp(1.65rem,3.6vw,3.35rem)/1.5 serif;letter-spacing:.055em;max-width:840px;overflow-wrap:anywhere;text-shadow:0 6px 28px #081726ef}
+.journey-char{display:inline-block;white-space:pre-wrap;opacity:0;will-change:opacity,transform}
+.journey-description{font-size:clamp(.96rem,1.4vw,1.26rem);line-height:1.95;max-width:680px;max-height:55vh;overflow-wrap:anywhere;color:#f2e9da;text-shadow:0 3px 14px #061423f0}
+.journey-prose{margin:0 0 .8rem!important;padding:4px 10px;border-left:2px solid #c6a778;border-radius:3px;background:linear-gradient(90deg,#102538a8,#10253820 96%);opacity:0;will-change:opacity,transform}
+.journey-overline{position:absolute;top:144px;left:7%;right:7%;z-index:5;pointer-events:none;display:flex;justify-content:space-between;gap:15px;font:.63rem sans-serif;letter-spacing:.16em;color:#cebc98}
+.journey-progress{position:absolute;bottom:8%;left:8%;right:8%;height:2px;background:#f5d69d3a;z-index:10;pointer-events:none}
+.journey-progress-line{display:block;width:calc(var(--scene-progress,0) * 100%);height:100%;background:linear-gradient(90deg,#d6b97e,#f7e2b4)}
+.journey-progress-orb{position:absolute;left:calc(var(--scene-progress,0) * 100%);top:-4px;width:9px;height:9px;border-radius:50%;background:#fae4b8;box-shadow:0 0 12px #ffcb76}
+.journey-price{font:600 clamp(1.9rem,3vw,3.1rem) serif;color:#edcd96;letter-spacing:.04em;opacity:0}
+.journey-video-preview{width:min(460px,100%);aspect-ratio:16 / 9;object-fit:cover;box-shadow:0 14px 45px #050f1c96;border:1px solid #d1b68a7e;border-radius:12px;opacity:0}
+.journey-exit{pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid #e2c68b;background:#cdb27c;color:#0c2234;text-decoration:none;font:.85rem sans-serif;font-weight:650;letter-spacing:.04em;border-radius:7px;opacity:0}
+.journey-exit:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.journey-link-diagram{display:flex;align-items:center;gap:15px;width:min(700px,100%);position:relative}
+.journey-graph-core,.journey-graph-detail{opacity:0;will-change:opacity,transform}
+.journey-graph-core{background:#e8d7b6;color:#142b3a;border:2px solid #b4915c;border-radius:50% / 35%;width:clamp(100px,20%,150px);min-width:100px;min-height:105px;padding:12px;display:grid;place-items:center;text-align:center;font:600 clamp(.9rem,1.55vw,1.15rem)/1.5 serif;overflow-wrap:anywhere}
+.journey-graph-thread{height:2px;flex:0 0 32px;background:linear-gradient(90deg,#c8a670,#9fbdc0);box-shadow:0 0 10px #e8c78d75;transform:scaleX(var(--journey-draw,0));transform-origin:left}
+.journey-graph-detail{border:1px solid #e1c9a387;border-radius:12px;background:#10283bc9;color:#f6ecdd;padding:12px 16px;min-width:0;max-height:45vh;overflow:auto;flex:1}
+.journey-graph-detail small{display:block;color:#d6bb88;font-size:.74rem;margin-bottom:7px}
+.journey-graph-detail p{margin:0;font-size:clamp(.85rem,1.4vw,1.05rem);line-height:1.75;overflow-wrap:anywhere}
+@media(max-width:700px){
+ .journey-toolbar{top:65px}.journey-stage:before{inset:13px 10px}
+ .journey-overline{top:128px;left:7%;right:7%;font-size:.52rem;letter-spacing:.08em}
+ .journey-content{inset:20% 6% 13%;width:88%;gap:13px;justify-content:center}
+ .journey-title{font-size:clamp(1.52rem,6.2vw,2.15rem);line-height:1.55}
+ .journey-description{font-size:clamp(.9rem,3.75vw,1.04rem);line-height:1.76;max-height:52vh;overflow:auto}
+ .journey-graphic{inset:-12% -48% 12% -3%;opacity:.38}
+ .journey-symbol{width:125%;height:100%}
+ .journey-prose{padding:3px 7px}
+ .journey-link-diagram{gap:9px}
+ .journey-graph-core{min-width:73px;width:80px;min-height:87px;font-size:.83rem;padding:7px}
+ .journey-graph-thread{flex-basis:12px}
+ .journey-graph-detail{padding:10px 9px;max-height:46vh}
+ .journey-graph-detail p{font-size:.83rem}
+ .journey-progress{bottom:7%;left:7%;right:7%}
+ .journey-video-preview{max-width:100%}
+}
+@media(max-width:350px){.journey-content{inset:18% 5% 10%;gap:9px}.journey-title{font-size:1.48rem}.journey-description{font-size:.85rem;line-height:1.65}.journey-overline{top:124px}}
+/* Progressive enhancement: without JS, original content is visible in full. */
+@media(prefers-reduced-motion:reduce){
+ body.journey-enabled .journey-track{display:none}
+ body.journey-enabled main>.journey-original{display:block!important;padding-top:90px}
+ .journey-char,.journey-prose,.journey-exit{opacity:1!important;transform:none!important}
+}

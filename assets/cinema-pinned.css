@@ -1,0 +1,67 @@
+/* Ver.10.0 Pinned, continuous scroll-cinema. Scrolling is a playhead, not a stack of slides. */
+.page-archive.archive-cinema-on:not(.archive-reading-on) .doc-reading{display:none!important}
+.page-archive.archive-cinema-on.archive-reading-on .cinema-scroll-track{display:none!important}
+.page-archive.archive-cinema-on.archive-reading-on .story-endnote{display:none!important}
+.page-archive.archive-cinema-on:not(.archive-reading-on) .mobile-read-nav{display:none!important}
+.page-archive .archive-scroll-experience{max-width:1240px}
+.page-archive .cinema-scroll-track{display:block!important;position:relative;margin:0 -12px!important;max-width:none!important;min-height:100svh;isolation:isolate}
+.page-archive .cinema-pin{position:sticky;top:0;height:100svh;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2}
+.page-archive .cinema-scene{height:min(calc(100svh - 82px),930px);width:100%;position:relative;overflow:hidden;border-radius:24px;background:radial-gradient(ellipse at 80% 14%,#3b4858 0,#1b3042 44%,#0b1b2e 90%);border:1px solid rgba(216,187,133,.55);box-shadow:0 25px 80px #0e1e2c40;isolation:isolate}
+.page-archive .cinema-scene:after{content:"";position:absolute;inset:16px;border:1px solid #d9b98735;border-radius:15px;z-index:7;pointer-events:none}
+.page-archive .cinema-scene .cinema-decor{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 75% 30%,#c7a76b22,transparent 25%)}
+.page-archive .cinema-decor i{display:block;position:absolute;border:1px solid #e2cc9e22;width:50vmin;height:50vmin;border-radius:50%;right:-10%;top:-20%}
+.page-archive .cinema-decor i:nth-child(2){right:-2%;top:-10%;width:40vmin;height:40vmin}
+.page-archive .cinema-decor i:nth-child(3){right:5%;top:0;width:30vmin;height:30vmin}
+.page-archive .cinema-layer{position:absolute;inset:0;z-index:2;pointer-events:none;transform-origin:center;will-change:opacity,transform}
+.page-archive .cinema-overline{position:absolute;top:7%;left:6%;right:6%;display:flex;gap:20px;justify-content:space-between;color:#e1c99e;font:500 clamp(.58rem,.75vw,.72rem) var(--font-body,sans-serif);letter-spacing:.1em;z-index:3}
+.page-archive .cinema-art{position:absolute;top:8%;right:0;width:64%;height:88%;opacity:.35;display:grid;place-items:center;filter:drop-shadow(0 0 15px #f4db9a66);transform:translateX(calc((1 - var(--cinema-draw,0))*40px)) scale(calc(1 + var(--cinema-draw,0)*.07));z-index:0}
+.page-archive .cinema-art svg{width:100%;height:100%;max-width:850px;max-height:650px;overflow:visible}
+.page-archive .cinema-art .graphic-thread{stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 10px #e9c89296)}
+.page-archive .cinema-art .graphic-main-node{fill:#213647;stroke:#e0c494;stroke-width:1.5}
+.page-archive .cinema-art .graphic-label{fill:#f6e9cf;font:500 18px serif;text-anchor:middle}
+.page-archive .cinema-art .graphic-label.small{font-size:13px}
+.page-archive .cinema-art .graphic-tiny{fill:#f1d3a0;font:12px sans-serif;text-anchor:middle}
+.page-archive .cinema-content{position:absolute;inset:17% 7% 9%;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1.5rem;max-width:780px;pointer-events:none}
+.page-archive .cinema-heading{color:#ffedcb;font:500 clamp(1.65rem,3vw,3.15rem)/1.55 var(--font-display,serif);letter-spacing:.04em;max-width:750px;text-shadow:0 8px 30px #08131fc0}
+.page-archive .cinema-heading-glyph,.page-archive .cinema-glyph{display:inline-block;opacity:0;white-space:pre-wrap;will-change:opacity,transform}
+.page-archive .cinema-newline{display:block;line-height:.25}
+.page-archive .cinema-ink-rule{height:1px;width:clamp(80px,28%,220px);background:linear-gradient(90deg,#dbb778,#e4d3a4aa,transparent);transform:scaleX(calc(.07 + .93 * var(--cinema-ink,0)));transform-origin:left}
+.page-archive .cinema-body{font:400 clamp(.97rem,1.25vw,1.22rem)/2.05 var(--font-body,sans-serif);letter-spacing:.012em;color:#f1e7d5;max-width:650px;white-space:normal;text-shadow:0 3px 18px #091828e3;overflow-wrap:anywhere;background:linear-gradient(90deg,#0b2034ba,transparent);padding:10px 12px;border-radius:6px}
+.page-archive .cinema-instructions{position:absolute;right:5%;bottom:4%;z-index:6;font:500 .62rem var(--font-body,sans-serif);letter-spacing:.2em;color:#bfc6c9;opacity:.8}
+.page-archive .cinema-instructions span{display:inline-block;padding-left:10px;color:#e6c28e}
+/* Existing old cards are not created in the cinema version. */
+.page-archive .story-toolbar{z-index:50;margin-bottom:0;border-radius:0 0 12px 12px}
+.page-archive .story-heading-block{margin-bottom:10px}
+.page-archive .archive-scroll-experience{margin-top:35px}
+.page-archive .story-endnote{margin-top:20px}
+@media(max-width:820px){
+ .page-archive .cinema-scroll-track{margin:0 -8px!important}
+ .page-archive .cinema-scene{width:100%;height:calc(100svh - 80px);border-radius:13px}
+ .page-archive .cinema-scene:after{inset:9px;border-radius:9px}
+ .page-archive .cinema-overline{top:7%;left:7%;right:7%;font-size:.55rem}
+ .page-archive .cinema-art{top:10%;right:-30%;height:70%;width:120%;opacity:.20}
+ .page-archive .cinema-content{inset:15% 7% 13%;gap:1.2rem;justify-content:center}
+ .page-archive .cinema-heading{font-size:clamp(1.38rem,6vw,2.1rem);line-height:1.5}
+ .page-archive .cinema-body{font-size:clamp(.9rem,3.75vw,1rem);line-height:1.94;max-width:100%;padding:6px 7px}
+ .page-archive .cinema-instructions{font-size:.52rem}
+}
+@media(max-width:360px){
+ .page-archive .cinema-content{inset:14% 6% 11%;gap:.7rem}
+ .page-archive .cinema-heading{font-size:1.35rem}
+ .page-archive .cinema-body{font-size:.86rem;line-height:1.85}
+ .page-archive .cinema-art{right:-36%;opacity:.17}
+}
+/* Fallback: the full approved source is visible without JavaScript, and accessible in reading mode. */
+@media(prefers-reduced-motion:reduce){
+ .page-archive .cinema-heading-glyph,.page-archive .cinema-glyph{opacity:1!important;transform:none!important}
+ .page-archive .cinema-art .graphic-thread{stroke-dashoffset:0!important}
+ .page-archive .cinema-layer{transform:none!important}
+}
+/* v11: approved tabular facts presented as a diagram in the same cinematic space. */
+.page-archive .cinema-relation{display:flex;align-items:center;gap:12px;width:min(725px,100%);min-height:130px;margin-top:.3rem;isolation:isolate}
+.page-archive .cinema-relation-center{width:clamp(106px,25%,165px);min-width:98px;aspect-ratio:1.1;display:grid;place-items:center;text-align:center;padding:12px;background:radial-gradient(circle,#e8d2a8,#bea474);border:1px solid #f5e1bc;color:#163247;font:600 clamp(.95rem,1.75vw,1.2rem)/1.55 serif;border-radius:50% / 38%;box-shadow:0 0 22px #dfc18a6b;overflow-wrap:anywhere}
+.page-archive .cinema-relation-thread{width:clamp(12px,5%,48px);height:2px;background:linear-gradient(90deg,#eed6a0,#7eb4b6);transform:scaleX(var(--cinema-draw,0));transform-origin:left;box-shadow:0 0 11px #d5ae70}
+.page-archive .cinema-relation-note{flex:1;min-width:0;max-height:46svh;overflow-y:auto;border:1px solid #d6b6848a;border-radius:12px;background:#0e2b3dcc;color:#f8ecda;padding:16px 18px;opacity:calc(.25 + var(--cinema-draw,0)*.75);transform:translateY(calc((1 - var(--cinema-draw,0))*14px));text-shadow:0 3px 10px #06131e}
+.page-archive .cinema-relation-note small{display:block;color:#e3c493;letter-spacing:.06em;margin-bottom:8px;font-size:.76rem}
+.page-archive .cinema-relation-note p{margin:0;font-size:clamp(.94rem,1.35vw,1.12rem);line-height:1.9}
+@media(max-width:700px){.page-archive .cinema-relation{gap:7px}.page-archive .cinema-relation-center{min-width:76px;width:82px;font-size:.83rem;padding:5px}.page-archive .cinema-relation-thread{width:12px;flex:0 0 12px}.page-archive .cinema-relation-note{padding:9px;max-height:36svh}.page-archive .cinema-relation-note p{font-size:.85rem;line-height:1.68}}

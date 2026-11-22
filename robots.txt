@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://iizuna-machika.github.io/sitemap.xml
