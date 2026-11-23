@@ -44,7 +44,7 @@ if(type==='divination' && divinationDiagram){
  add({kind:'method-network',part:'五十縄鑑定の占術',title:'六つの占術を三つの縄に',caption:'各占術の読みを比べ、共通点や違いを相談の問いに照らし合わせます。'});
 }
 
-let heading=name,chapter=name,acc=[],accLinks=[],accLen=0;
+let heading=name,chapter=name,acc=[],accLinks=[],accLen=0,inCase=false;
 const getLinks=e=>[...e.querySelectorAll('a[href]')].filter(a=>!a.classList.contains('chapter-return')).map(a=>({label:clean(a.textContent)||'関連ページを見る',url:a.getAttribute('href')}));
 // Preserve explanatory prose but never reproduce linked labels as inert text in motion mode.
 // The full-text reader still contains the source HTML exactly as approved.
@@ -54,20 +54,25 @@ const proseExcludingLinks=e=>{
  return clean(clone.textContent);
 };
 const recordLinks=links=>{for(const link of links)if(link.url&&!accLinks.some(x=>x.url===link.url))accLinks.push(link)};
-const flush=()=>{if(acc.length){add({kind:'text',part:chapter,title:heading,lines:acc.splice(0),links:accLinks.splice(0)});accLen=0}else if(accLinks.length){const prev=scenes.at(-1);if(prev)prev.links=[...(prev.links||[]),...accLinks.splice(0)]}};
-const append=t=>{for(const chunk of parts(t)){
+const flush=()=>{if(acc.length){add({kind:'text',part:chapter,title:heading,inCase,lines:acc.splice(0),links:accLinks.splice(0)});accLen=0}else if(accLinks.length){const prev=scenes.at(-1);if(prev)prev.links=[...(prev.links||[]),...accLinks.splice(0)]}};
+const append=t=>{
+ if(inCase){acc.push(t);return}
+ for(const chunk of parts(t)){
   const size=[...chunk].length;
   if(acc.length && (accLen+size>charBudget || acc.length>=8))flush();
   acc.push(chunk);accLen+=size;
-}};
+ }
+};
 const selector=type==='archive'?
- '.doc-reading .doc-chapter h2,.doc-reading .doc-chapter h3,.doc-reading .doc-chapter h4,.doc-reading .doc-chapter p,.doc-reading .doc-chapter li,.doc-reading .doc-chapter table':
+ '.doc-reading .doc-chapter h2,.doc-reading .doc-chapter h3,.doc-reading .doc-chapter h4,.doc-reading .archive-case h5,.doc-reading .doc-chapter p,.doc-reading .doc-chapter li,.doc-reading .doc-chapter table':
  'h2,h3,h4,p,li,dt,dd,table,.plan-card,.video-card';
 for(const e of original.querySelectorAll(selector)){
   if(excluded(e)||e.closest('.plan-card,.video-card')&&!e.matches('.plan-card,.video-card'))continue;
   const t=clean(e.textContent),tag=e.tagName;if(!t)continue;
-  if(/^H[234]$/.test(tag)||tag==='DT'){
-    flush();heading=t;if(tag==='H2')chapter=t;
+  if(/^H[2345]$/.test(tag)||tag==='DT'){
+    flush();
+    inCase=e.matches('.archive-case h5');
+    heading=t;if(tag==='H2')chapter=t;
     if(type==='about'&&t==='活動の四つの表現'){
       const activities=[...original.querySelectorAll('.activity-grid .activity-tile')].map(tile=>({title:clean(tile.querySelector('h3')?.textContent),text:clean(tile.querySelector('p')?.textContent),url:tile.querySelector('a')?.getAttribute('href')}));
       add({kind:'activities',part:'ABOUT / ACTIVITIES',title:t,activities});
@@ -138,7 +143,7 @@ function mergeNearbyText(){
  const cap=Math.round(charBudget*(vw<=360?1.10:vw<=760?1.25:1.30));
  for(const scene of scenes){
   const prev=merged.at(-1);
-  if(scene.kind==='text'&&prev&&['text','text-combo'].includes(prev.kind)){
+  if(scene.kind==='text'&&!scene.inCase&&prev&&!prev.inCase&&['text','text-combo'].includes(prev.kind)){
    // Avoid mixing unrelated major sections, but group neighboring small subtopics.
    const same=scene.part===prev.part;
    const shortIntro=prev.kind==='text'&&sceneSize(prev)<75;
@@ -434,7 +439,7 @@ function rebalanceViewport(){
  for(let i=0;i<scenes.length&&checked<900;i++){
    const scene=scenes[i];
    const relation = scene.kind === 'relation' || scene.kind === 'relation-group';
-   if (vh <= 500 && !relation) continue;
+   if (scene.inCase || (vh <= 500 && !relation)) continue;
    probe.replaceChildren(makePage(i, false));
    const plate=probe.querySelector('.book-plate'),copy=probe.querySelector('.book-copy');if(!copy||!plate)continue;
    const vr=plate.getBoundingClientRect();

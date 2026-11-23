@@ -736,3 +736,23 @@ body.book-on .site-header .brand-sub { color: var(--text-muted-night); }
   text-decoration: underline;
   text-underline-offset: .25em;
 }
+
+/* Preserve the heading and list as a distinct example in the full text. */
+.page-archive .archive-case {
+  margin-block: 1rem;
+  padding: clamp(.9rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--rule-night);
+  border-radius: .3rem;
+  background: var(--surface-night);
+}
+.page-archive .archive-case h5 {
+  margin: 0 0 .65rem;
+  color: #efd2a0;
+  font-size: clamp(1.05rem, 2.3vw, 1.3rem);
+  line-height: 1.5;
+}
+.page-archive .archive-case ul {
+  margin-block: 0;
+  padding-inline-start: 1.25em;
+}
+.page-archive .archive-case li + li { margin-top: .45rem; }
