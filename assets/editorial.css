@@ -756,3 +756,18 @@ body.book-on .site-header .brand-sub { color: var(--text-muted-night); }
   padding-inline-start: 1.25em;
 }
 .page-archive .archive-case li + li { margin-top: .45rem; }
+
+/* Keep the diagram above the text in the full archive reader. */
+body.page-archive.book-reading .archive-first-part {
+  max-width: 780px;
+  margin-inline: auto;
+}
+body.page-archive.book-reading .archive-first-part .principles-experience {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 30px;
+}
+body.page-archive.book-reading .archive-first-part .principles-rail-inner {
+  width: min(100%, 560px);
+  margin-inline: auto;
+}
